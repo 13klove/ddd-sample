@@ -2,6 +2,7 @@ package com.example.dddsample.category.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import java.time.Instant
 
@@ -11,11 +12,11 @@ class Category(
 ) {
 
     @Id
-    @GeneratedValue
-    val id: Long = 0
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: CategoryId = 0
 
     var name: String = name
-        protected set
+        private set
 
     val createdAt: Instant = Instant.now()
     var updatedAt: Instant = Instant.now()
@@ -26,3 +27,5 @@ class Category(
         this.updatedAt = updatedAt
     }
 }
+
+typealias CategoryId = Long

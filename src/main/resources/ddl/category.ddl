@@ -41,3 +41,21 @@ create table product_file
     updated_at   datetime(6),
     primary key (id)
 ) engine=InnoDB;
+
+create table seller
+(
+    id             bigint not null auto_increment,
+    company_name   varchar(255),
+    company_number varchar(255),
+    password       varchar(255),
+    seller_id      varchar(255),
+    primary key (id)
+) engine=InnoDB;
+
+create table medical_information
+(
+    id         bigint      not null auto_increment,
+    seller_id  bigint      not null,
+    blood_type varchar(10) not null,
+    primary key (id)
+) engine=InnoDB;

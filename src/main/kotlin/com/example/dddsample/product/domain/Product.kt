@@ -1,8 +1,16 @@
 package com.example.dddsample.product.domain
 
-import jakarta.persistence.*
+import jakarta.persistence.CollectionTable
+import jakarta.persistence.Column
+import jakarta.persistence.ElementCollection
+import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
 import java.time.Instant
-
 
 @Entity
 class Product(
@@ -12,7 +20,8 @@ class Product(
     stock: Int,
     status: ProductStatus,
     categoryIds: MutableList<Long>,
-    productFiles: MutableList<ProductFile>
+    productFiles: MutableList<ProductFile>,
+    sellerId: String,
 ) {
 
     @Id
@@ -27,6 +36,7 @@ class Product(
         private set
     var stock: Int = stock
         private set
+
     @Enumerated(EnumType.STRING)
     var status: ProductStatus = status
         private set
@@ -40,6 +50,9 @@ class Product(
     @ElementCollection
     @CollectionTable(name = "product_file", joinColumns = [JoinColumn(name = "product_id")])
     var productFiles: MutableList<ProductFile> = productFiles
+        private set
+
+    var sellerId: String = sellerId
         private set
 
     val createdAt: Instant = Instant.now()
@@ -61,7 +74,6 @@ class Product(
     fun removeFile(fileId: ProductFileId) {
         this.productFiles.removeIf { it.id == fileId }
     }
-
 }
 
 typealias ProductId = Long

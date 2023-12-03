@@ -9,6 +9,7 @@ class CategoryApplication(
     private val categoryReader: CategoryReader,
 ) {
     fun findAll(): List<CateogoryModel> {
+
         return categoryReader.findAll().map {
             CateogoryModel(
                 id = it.id,

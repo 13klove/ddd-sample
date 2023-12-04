@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class CategoryDeleteApplication(
     private val categoryWriter: CategoryWriter,
-    private val productReader: ProductReader,
+    private val productReader: ProductReader
 ) {
 
     fun delete(id: Long) {
@@ -16,4 +16,5 @@ class CategoryDeleteApplication(
         }
         categoryWriter.delete(id)
     }
+
 }

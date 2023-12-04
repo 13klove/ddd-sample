@@ -1,7 +1,7 @@
 package com.example.dddsample.category.application
 
-import com.example.dddsample.category.domain.CategoryReader
 import com.example.dddsample.category.application.dto.CateogoryModel
+import com.example.dddsample.category.domain.CategoryReader
 import org.springframework.stereotype.Service
 
 @Service
